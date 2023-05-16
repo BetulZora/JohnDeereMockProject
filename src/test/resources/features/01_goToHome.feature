@@ -14,8 +14,26 @@ Feature: Can I go to the John Deere Home Page and look?
     |Our Company and Purpose|
     #Manually verified that submenus are visible upon hovering
 
-  @WIP @ui
+   @ui
  Scenario: I find Digital tools
    Given I hover over the "Digital" menu
    And I select the "Digital Tools" option
    Then The URL should contain "digital-tools"
+
+
+  @WIP @ui
+  Scenario Outline: I find Pats And Service options
+    Given I hover over the "Parts & Service" menu
+    And I select the "<submenu>" option
+    Then The URL should contain "digital-tools"
+    Examples:
+    |submenu|
+    | parts      |
+    | Manuals & Training    |
+    | Owner Information    |
+    | Warranty, Service & Protection Plans    |
+    | StellarSupport™  |
+    | John Deere Connected Support™  |
+    | Recalls |
+    | Safety |
+    | Self-Repair |

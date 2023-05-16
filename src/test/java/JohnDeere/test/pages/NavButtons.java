@@ -8,6 +8,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class NavButtons {
     String primaryMenu="";
 
@@ -35,6 +38,10 @@ public abstract class NavButtons {
     public WebElement companyBTN;
 
 
+
+
+    @FindBy( className = "secondary-link")
+    public List<WebElement> allSubMenus;
 
 
 
@@ -76,12 +83,19 @@ public abstract class NavButtons {
     }
 
     public void findSubmenu(String submenu){
+        List<WebElement> categoryMenus = new ArrayList<>();
+        for (WebElement each: allSubMenus
+             ) {
+            if (each.getAttribute("data-menu-category").contains(submenu)){
+                categoryMenus.add(each);
+                System.out.println(each.getText());
+            }
 
-//<a data-menu-category="Our Company &amp; Purpose" class="secondary-link"
-// href="https://about.deere.com/en-us/our-company-and-purpose/customer-support-and-advocacy/"
-// data-target="nav-tier3-customer-support-and-advocacy" aria-label="Our Company &amp; Purpose - Customer Support &amp;
-// Advocacy">Customer Support &amp; Advocacy<span class="icon-jd_carrot_right"></span></a>
- String locator="";
+        }
+
+
+
+
 
 
     }
