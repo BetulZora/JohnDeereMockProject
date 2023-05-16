@@ -5,6 +5,7 @@ import JohnDeere.test.utils.ConfigurationReader;
 import JohnDeere.test.utils.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
 
 public class homeSteps {
@@ -30,9 +31,13 @@ public class homeSteps {
 
     @Given("I select the {string} option")
     public void i_select_the_option(String chosen) {
+        if(chosen.toLowerCase().equals("digital tools") || chosen.toLowerCase().equals("digital-tools")) {
+            child.digitalToolsOPT.click();
+        }
         }
     @Then("The URL should contain {string}")
-    public void the_url_should_contain(String string) {
+    public void the_url_should_contain(String chosen) {
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(chosen));
     }
 
 

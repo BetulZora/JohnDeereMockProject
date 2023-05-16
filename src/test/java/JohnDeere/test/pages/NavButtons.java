@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public abstract class NavButtons {
+    String primaryMenu="";
 
     public NavButtons() {
         PageFactory.initElements(Driver.getDriver(),this);
@@ -28,6 +29,8 @@ public abstract class NavButtons {
     public WebElement partsBTN;
     @FindBy (partialLinkText = "Digital")
     public WebElement digitalBTN;
+    @FindBy (css = "a[href='/en/digital-tools/']")
+    public WebElement digitalToolsOPT;
     @FindBy (partialLinkText = "Our Company & Purpose")
     public WebElement companyBTN;
 
@@ -36,15 +39,16 @@ public abstract class NavButtons {
 
 
     public WebElement hoverMenu(String menuName) throws NoSuchElementException {
-        if(menuName.toLowerCase().equals("parts and services")||menuName.toLowerCase().equals("parts and service")){
-            menuName = "Parts & Service";
+        primaryMenu = menuName;
+        if(primaryMenu.toLowerCase().equals("parts and services")||primaryMenu.toLowerCase().equals("parts and service")){
+            primaryMenu = "Parts & Service";
         }
 
-        if(menuName.toLowerCase().equals("our company and purpose")){
-            menuName = "Our Company & Purpose";
+        if(primaryMenu.toLowerCase().equals("our company and purpose")){
+            primaryMenu = "Our Company & Purpose";
         }
 
-        switch (menuName){
+        switch (primaryMenu){
             case "Equipment":
                 return equipmentBTN;
             case "Finance":
@@ -68,13 +72,20 @@ public abstract class NavButtons {
     public void hoverOnMenu(String menuName) throws InterruptedException {
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(hoverMenu(menuName)).perform();
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
-    public void hoverOnMenu(WebElement element) throws InterruptedException {
-        Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(element).perform();
-        Thread.sleep(1000);
+
+    public void findSubmenu(String submenu){
+
+//<a data-menu-category="Our Company &amp; Purpose" class="secondary-link"
+// href="https://about.deere.com/en-us/our-company-and-purpose/customer-support-and-advocacy/"
+// data-target="nav-tier3-customer-support-and-advocacy" aria-label="Our Company &amp; Purpose - Customer Support &amp;
+// Advocacy">Customer Support &amp; Advocacy<span class="icon-jd_carrot_right"></span></a>
+ String locator="";
+
+
     }
+
 
 
 }
