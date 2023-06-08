@@ -14,7 +14,7 @@ Feature: Can I go to the John Deere Home Page and look?
     |Our Company and Purpose|
     #Manually verified that submenus are visible upon hovering
 
-   @ui
+   @ui @focus
  Scenario: I find Digital tools
    Given I hover over the "Digital" menu
    And I select the "Digital Tools" option
@@ -22,7 +22,7 @@ Feature: Can I go to the John Deere Home Page and look?
 
 
   @WIP @ui
-  Scenario Outline: I find Pats And Service options
+  Scenario Outline: I find Parts And Service options
     Given I hover over the "Parts & Service" menu
     And I select the "<submenu>" option
     Then The URL should contain "digital-tools"

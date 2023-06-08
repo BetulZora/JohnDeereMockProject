@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "JohnDeere/test/steps",
         dryRun = false,
-        tags = "@WIP"
+        tags = "@focus"
 
 )
 public class Nimbus2000 {
