@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public abstract class NavButtons {
@@ -82,19 +83,18 @@ public abstract class NavButtons {
         Thread.sleep(500);
     }
 
-    public void findSubmenu(String submenu){
-        List<WebElement> categoryMenus = new ArrayList<>();
-        for (WebElement each: allSubMenus
-             ) {
-            if (each.getAttribute("data-menu-category").contains(submenu)){
-                categoryMenus.add(each);
-                System.out.println(each.getText());
+    public WebElement findSubmenu(String submenu){
+
+        for (WebElement each: allSubMenus) {
+            if (each.getText().contains(submenu)){
+
+                System.out.println("Returned submenu is: " +each.getText());
+                return each;
             }
 
         }
 
-
-
+        return null;
 
 
 

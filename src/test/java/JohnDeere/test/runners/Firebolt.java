@@ -16,9 +16,9 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "JohnDeere/test/steps",
         dryRun = false,
-        tags = "@focus"
+        tags = "@WIP"
 
 )
-public class Nimbus2000 {
+public class Firebolt {
 
 }

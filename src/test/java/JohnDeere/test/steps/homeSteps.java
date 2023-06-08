@@ -6,7 +6,10 @@ import JohnDeere.test.utils.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.List;
 
 public class homeSteps {
     ChildClass child;
@@ -31,9 +34,53 @@ public class homeSteps {
 
     @Given("I select the {string} option")
     public void i_select_the_option(String chosen) {
-        if(chosen.toLowerCase().equals("digital tools") || chosen.toLowerCase().equals("digital-tools")) {
-            child.digitalToolsOPT.click();
+
+        // will use a switch case for simple menu
+
+        switch(chosen){
+            case "digital tools":
+            case "Digital tools":
+            case "Digital Tools":
+            case "digital-tools":
+            case "Digital-tools":
+            case "Digital-Tools":
+                child.digitalToolsOPT.click();
+                break;
+
+            case "Owner Information ":
+            case "Owner Information":
+                child.findSubmenu("Owner Information").click();
+                break;
+
+            case "StellarSupport™":
+                child.findSubmenu("StellarSupport™").click();
+                break;
+            case "Recalls":
+            case "recalls":
+                child.findSubmenu("Recalls").click();
+                break;
+            case "Safety":
+            case "safety":
+                child.findSubmenu("Safety").click();
+                break;
+            case "Self-Repair":
+            case "self-repair":
+            case "self repair":
+            case "Self Repair":
+                child.findSubmenu("Self-Repair").click();
+                break;
         }
+
+
+        // will use this list only if the primary menu has more than one sub-menus
+        List<WebElement> submenu = null;
+
+
+        if(chosen.toLowerCase().equals("parts")){
+            child.findSubmenu("Parts").click();
+
+        }
+
         }
     @Then("The URL should contain {string}")
     public void the_url_should_contain(String chosen) {
